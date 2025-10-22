@@ -1,0 +1,219 @@
+/* Custom animations and transitions */
+* {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* Smooth focus ring */
+input:focus {
+  outline: none;
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+/* Button hover effect */
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 73px; /* Height of header */
+  bottom: 0;
+  width: 256px;
+  background-color: #1f2937;
+  overflow-y: auto;
+  z-index: 30;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Mobile: hide sidebar by default */
+@media (max-width: 1023px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+  
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
+
+/* Desktop: show sidebar */
+@media (min-width: 1024px) {
+  .sidebar {
+    transform: translateX(0);
+  }
+}
+
+/* Sidebar Links */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #9ca3af;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.sidebar-link:hover {
+  background-color: #374151;
+  color: #fff;
+}
+
+.sidebar-link.active {
+  background-color: #f97316;
+  color: #fff;
+}
+
+.sidebar-link svg {
+  flex-shrink: 0;
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  margin-left: 256px;
+  min-height: calc(100vh - 73px);
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Scrollbar styling for sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* ===== Responsive & Accessibility improvements ===== */
+/* Use border-box everywhere for predictable sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Improve text rendering on larger screens */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%; /* prevent mobile font autosizing */
+}
+
+/* Responsive root font-size: scales slightly with viewport width for better legibility on large monitors */
+@media (min-width: 1200px) {
+  html { font-size: 18px; }
+}
+@media (min-width: 1600px) {
+  html { font-size: 19px; }
+}
+@media (max-width: 640px) {
+  html { font-size: 15px; }
+}
+
+/* Fluid container utility (used by pages to keep content readable on wide screens) */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Improve readability on very wide screens by constraining line lengths */
+.prose {
+  max-width: 75ch; /* readable line length */
+}
+
+/* Make images and iframes scale nicely */
+img, svg, picture, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Tables: allow horizontal scroll on small screens but keep layout nice on large ones */
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+/* Increase touch target sizes for buttons/links on large displays */
+button, a.button, .btn {
+  min-height: 40px;
+  min-width: 44px;
+}
+
+/* Provide higher contrast focus outline for accessibility */
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 3px solid rgba(59,130,246,0.25);
+  outline-offset: 2px;
+}
+
+/* Adjust main-content margin for ultrawide screens to avoid extreme stretching */
+@media (min-width: 1600px) {
+  .main-content {
+    margin-left: 320px; /* give slightly more space for sidebar on very wide monitors */
+    max-width: calc(100% - 320px);
+  }
+}
+
+/* Ensure header image/logo scales neatly */
+header img { max-height: 64px; height: auto; }
+
+/* Small utility: better readable small text on high-res displays */
+@media (min-resolution: 2dppx) {
+  small, .text-xs { font-size: 0.85em; }
+}
