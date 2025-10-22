@@ -140,80 +140,49 @@ button:active {
 }
 
 /* ===== Responsive & Accessibility improvements ===== */
-/* Use border-box everywhere for predictable sizing */
+
+/* 1. Box-sizing (ESSENTIAL) */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* Improve text rendering on larger screens */
+/* 2. Text rendering (PROFESSIONAL) */
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-size-adjust: 100%; /* prevent mobile font autosizing */
+  text-size-adjust: 100%;
 }
 
-/* Responsive root font-size: scales slightly with viewport width for better legibility on large monitors */
-@media (min-width: 1200px) {
-  html { font-size: 18px; }
-}
-@media (min-width: 1600px) {
-  html { font-size: 19px; }
-}
-@media (max-width: 640px) {
-  html { font-size: 15px; }
-}
-
-/* Fluid container utility (used by pages to keep content readable on wide screens) */
-.container {
-  width: 100%;
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-/* Improve readability on very wide screens by constraining line lengths */
-.prose {
-  max-width: 75ch; /* readable line length */
-}
-
-/* Make images and iframes scale nicely */
+/* 3. Image scaling (SMART) */
 img, svg, picture, video, iframe {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Tables: allow horizontal scroll on small screens but keep layout nice on large ones */
-.overflow-x-auto {
-  overflow-x: auto;
-}
-
-/* Increase touch target sizes for buttons/links on large displays */
-button, a.button, .btn {
-  min-height: 40px;
-  min-width: 44px;
-}
-
-/* Provide higher contrast focus outline for accessibility */
-a:focus, button:focus, input:focus, textarea:focus {
-  outline: 3px solid rgba(59,130,246,0.25);
+/* 4. Accessibility focus outlines (CRITICAL) */
+a:focus, button:focus, input:focus, textarea:focus, select:focus {
+  outline: 3px solid rgba(246, 119, 34, 0.25); /* Orange to match your brand */
   outline-offset: 2px;
 }
 
-/* Adjust main-content margin for ultrawide screens to avoid extreme stretching */
+/* 5. Touch targets (GREAT UX) */
+button, a.btn {
+  min-height: 44px;  /* iOS recommended size */
+  min-width: 44px;
+}
+
+/* 6. Ultra-wide screen adjustment (NICE) */
 @media (min-width: 1600px) {
   .main-content {
-    margin-left: 320px; /* give slightly more space for sidebar on very wide monitors */
+    margin-left: 320px;
     max-width: calc(100% - 320px);
   }
 }
 
-/* Ensure header image/logo scales neatly */
-header img { max-height: 64px; height: auto; }
-
-/* Small utility: better readable small text on high-res displays */
+/* 7. High-resolution displays (POLISH) */
 @media (min-resolution: 2dppx) {
-  small, .text-xs { font-size: 0.85em; }
+  small, .text-xs {
+    font-size: 0.85em;
+  }
 }
