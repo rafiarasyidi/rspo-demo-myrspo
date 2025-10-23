@@ -129,6 +129,13 @@ footer.footer-with-sidebar {
   transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
 }
 
+/* Add proper padding to align with main content */
+@media (min-width: 1024px) {
+  footer.footer-with-sidebar > div {
+    padding-left: 1.5rem !important; /* 24px - matches main content padding */
+  }
+}
+
 /* Mobile: no margin when sidebar is hidden */
 @media (max-width: 1023px) {
   footer.footer-with-sidebar {
@@ -198,6 +205,10 @@ button, a.btn {
   footer.footer-with-sidebar {
     margin-left: 320px;
     width: calc(100% - 320px);
+  }
+  
+  footer.footer-with-sidebar > div {
+    padding-left: 2rem !important; /* Slightly more padding for ultra-wide */
   }
 }
 
