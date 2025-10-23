@@ -121,6 +121,26 @@ button:active {
   transition: margin-left 0.3s ease-in-out;
 }
 
+/* Footer positioning to account for sidebar - UNIVERSAL FIX */
+footer {
+  width: 100%;
+  margin-left: 256px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Remove auto-centering on footer inner div to prevent gaps */
+footer > div {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Mobile: no margin when sidebar is hidden */
+@media (max-width: 1023px) {
+  footer {
+    margin-left: 0;
+  }
+}
+
 /* Scrollbar styling for sidebar */
 .sidebar::-webkit-scrollbar {
   width: 6px;
@@ -177,6 +197,10 @@ button, a.btn {
   .main-content {
     margin-left: 320px;
     max-width: calc(100% - 320px);
+  }
+  
+  footer {
+    margin-left: 320px;
   }
 }
 
