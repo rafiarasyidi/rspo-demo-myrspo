@@ -5,7 +5,7 @@
   transition-timing-function: ease-in-out;
 }
 
-/* Smooth focus ring */
+/* Smooth focus ringg */
 input:focus {
   outline: none;
   border-color: #f97316;
