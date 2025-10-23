@@ -122,22 +122,18 @@ button:active {
 }
 
 /* Footer positioning to account for sidebar - UNIVERSAL FIX */
-footer {
-  width: 100%;
+/* Class-based approach for maximum browser compatibility */
+footer.footer-with-sidebar {
   margin-left: 256px;
-  transition: margin-left 0.3s ease-in-out;
-}
-
-/* Remove auto-centering on footer inner div to prevent gaps */
-footer > div {
-  margin-left: 0;
-  margin-right: 0;
+  width: calc(100% - 256px);
+  transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
 }
 
 /* Mobile: no margin when sidebar is hidden */
 @media (max-width: 1023px) {
-  footer {
+  footer.footer-with-sidebar {
     margin-left: 0;
+    width: 100%;
   }
 }
 
@@ -199,8 +195,9 @@ button, a.btn {
     max-width: calc(100% - 320px);
   }
   
-  footer {
+  footer.footer-with-sidebar {
     margin-left: 320px;
+    width: calc(100% - 320px);
   }
 }
 
