@@ -1,5 +1,5 @@
 // ==========================================
-// LOGIN PAGE FUNCTIONS
+// LOGIN PAGE FUNCTION
 // ==========================================
 
 // Handle login form submission
